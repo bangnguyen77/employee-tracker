@@ -1,25 +1,19 @@
 <h1>Welcome to the Employee Tracker</h1>
 
 <h3>Create a new division:</h3>
-
 <form action="/divisions" method="post">
   <label for="name">Division Name</label>
   <input id="name" name="name" type="text">
-
   <button type="submit">Add Division</button>
 </form>
 
 <% if @divisions.any?() %>
   <h3>Here are all the divisions:</h3>
-
   <ul>
     <% @divisions.each() do |division| %>
       <li><a href="/divisions/<%= division.id() %>"><%= division.name() %></a></li>
     <% end %>
   </ul>
-
 <% else %>
-
     <p>There are no divisions yet!</p>
-
 <% end %>

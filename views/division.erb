@@ -1,4 +1,4 @@
-<%= @division.name() %>
+<h1><%= @division.name() %></h1>
 
 <h1>Update <%=@division.name() %> </h1>
 <form action="/divisions/<%= @division.id() %>" method="post">
@@ -14,6 +14,14 @@
   <button type="submit">Delete division</button>
 </form>
 
+<h1>Add an employee to <%= @division.name() %> </h1>
+  <form action="/divisions/<%= @division.id() %>/employees" method="post">
+    <input id="division_id" name="division_id" type="hidden" value="<%= @division.id() %>">
+    <label for="employee_name">Employee Name:</label>
+    <input id="employee_name" name="employee_name" type="text">
+    <button type="submit">Add employee</button>
+  </form>
+
 <h1>All of <%= @division.name() %>'s employees!</h1>
 <% if @division.employees().any?() %>
   <ul>
@@ -24,13 +32,5 @@
 <% else %>
   <p>There are no employees for this division!!!!</p>
 <% end %>
-
-<h3>Add an employee to <%= @division.name() %> </h3>
-  <form action="/divisions/<%= @division.id() %>/employees" method="post">
-    <input id="division_id" name="division_id" type="hidden" value="<%= @division.id() %>">
-    <label for="employee_name">Employee Name:</label>
-    <input id="employee_name" name="employee_name" type="text">
-    <button type="submit">Add employee</button>
-  </form>
 
 <a href="/">home</a>
